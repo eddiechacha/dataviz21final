@@ -1,0 +1,51 @@
+---
+title: "Final Project Memo"
+author: "Edwin Chalas Cuevas"
+date: "6/4/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview
+
+Here we go again!
+
+This project expands on what I did last quarter (https://www.manband.one/stock_EDA.html) with stock data. For that project I ran three models (linear regression, boosted tree, nearest neighbors) through all the companies that were on the S&P 500 from 2013-2017, in order to find out which of the three could most accurately predict the changes in stock price. 
+
+The results were mixed - I was expecting more of a clear blowout, but instead, my data ended up being a lot more varied. In the summary of that project, my conclusion was that "there is no one-size fits all approach for predicting stocks" - but also that I wanted to see more granular data on a company basis, to see if perhaps there are correlations between certain types of companies being better predicted by one model versus another. In this project, I've set up some visualizations to help answer that question.
+
+To create the visualizations I wanted, I created a shiny app (https://eddie-chacha.shinyapps.io/final_project/). Within this shiny app, I created two adjustable visualizations - one that shows the RMSE's per model for specific companies (By Company) and another that shows individual or aggregate model RMSE's on a sector basis, with every company in that sector highlighted out (By Sector & Model).
+
+## Interesting findings
+
+By Sector & Model
+- Some companies are seemingly easy to predict the price of: shoutout to Citrix Systems (Information Technology), Lockheed Martin (Industrials) , PerkinElmer (Health Care), Moody's (Financials), Advance Auto Parts (Consumer Discretionary), and CenterPoint Energy (Energy) for having aggregate RMSE values that are much lower than any others in their sector.
+- These differences are particularly stark when looking at individual models: Public Storage (Real Estate) and American Airlines (Industrials) are very closely predicted by a Boosted Tree model, for example. Maybe there's a connection between storage lockers and airlines that no one seems to pick up on, or maybe it's just a cute coincidence.
+
+By Company
+- A lot of companies have very similar RMSE distributions across models. For example, Apple, Amazon, Visa, Verizon, Ulta, Netflix, PayPal, PepsiCo, Google, Ford, EA, and Comcast have almost the same distribution of RMSE across model types. My initial thought is that these companies may all be growing pretty rapidly - though I never would think that Ford and Pepsi would have the same type of growth as Amazon or Netflix.
+
+## Answering our key questions
+
+- What is the core concept(s) or insight(s) into the data that you believe the visualization communicates?
+
+For the Sector & Model visualization, I believe that you can see more detailed insights into how individual companies can have wildly different types of growth over time, even if they're in the same sector. The strongest connection I was able to make with companies in an individual sector is with Communication Services - all but 5 of the stock tickers were worst predicted by a Boosted tree model (even with that not useful piece of data, that's 25% of the companies with different results). In short, this reaffirms my initial assessment that there wasn't any huge blowout by a model in any particular category. However, you can make a lot of insights into indivudual companies, and possibly find correlations between them based on how companies across sectors performed with specific models. Who knew that there was any sort of similarity between the stock prices of Public Storage and American Airlines? 
+
+Similarly, for the Company visualization, though I wasn't able to make it as robust as I may have wanted, you can still use it to see if there are commonalities between the RMSE distributions of companies, or if the RMSE competition for a company was close or not. Both of these things are insights that wouldn't be possible with the two brief visualizations I ended my last project with.
+
+## What now?
+
+That's one of my wishes for this question down two more to go!
+
+I'd still love some more recent stock data - specifically, data from the beginning of the pandemic (March 2020) to the present, now that things are opening up. I'd love to know if a specific model is more resilient to a large sea change like that than the others, and if what models could most accurately predict which companies would stay stable and which would struggle (the Yahoo stock data example made me realize there is a way to get some more data like this, which is great).
+
+Also, in some future where I'm an elite level data-science person, I would love to eventually capstone all of this effort with a hybrid predictive model that can be used to predict stock prices, and test that. In 301-3 I know we went into more detail into how to do stuff like that, but I'd want more practice before actually wanting to tackle a project of that scope. 
+
+## Data citations
+
+"**S&P 500 stock data**" by Cam Nugent, uploaded on kaggle.com: [S&P 500 stock data \| Kaggle](https://www.kaggle.com/camnugent/sandp500)
+
+"**S&P 500 Companies with Financial Information**" by by Datahub.io: [Datahhub](https://datahub.io/core/s-and-p-500-companies)
